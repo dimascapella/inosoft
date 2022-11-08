@@ -15,11 +15,11 @@ class TransactionFactory extends Factory
     public function definition()
     {
         return [
-            'purchase_date' => now(),
+            'purchase_date' => now()->toDateString(),
             'buyer_name' => $this->faker->name(),
             'unit' => $this->faker->randomDigit(),
-            'unitable_id' => 1,
-            'unitable_type' => Car::class
+            'vehicle_id' => 1,
+            'type' => 'car'
         ];
     }
 }

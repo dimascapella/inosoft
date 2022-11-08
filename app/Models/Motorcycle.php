@@ -10,11 +10,7 @@ class Motorcycle extends Model
 {
     use HasFactory;
 
-    public function vehicleable(){
-        return $this->morphTo();
-    }
-
     public function transactions(){
-        return $this->morphMany(Transaction::class, 'unitable');
+        return $this->hasMany(Transaction::class, 'vehicle_id');
     }
 }

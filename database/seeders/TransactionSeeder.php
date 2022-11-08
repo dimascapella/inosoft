@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Transaction;
 use App\Models\Car;
 use App\Models\Motorcycle;
-use App\Models\Transaction;
 
 class TransactionSeeder extends Seeder
 {
@@ -17,12 +17,18 @@ class TransactionSeeder extends Seeder
     public function run()
     {
         Transaction::truncate();
-        Transaction::factory(20)->create([
-            'unitable_type' => Car::class
-        ]);
+        Car::all()->each(function($car){
+            Transaction::factory(2)->create([
+                'vehicle_id' => $car->_id,
+                'type' => 'car'
+            ]);
+        });
 
-        Transaction::factory(20)->create([
-            'unitable_type' => Motorcycle::class
-        ]);
+        Motorcycle::all()->each(function($motorcycle){
+            Transaction::factory(2)->create([
+                'vehicle_id' => $motorcycle->_id,
+                'type' => 'motorcycle'
+            ]);
+        });
     }
 }

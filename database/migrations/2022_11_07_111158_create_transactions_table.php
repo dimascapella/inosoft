@@ -18,7 +18,8 @@ class CreateTransactionsTable extends Migration
             $table->date('purchase_date');
             $table->string('buyer_name');
             $table->integer('unit');
-            $table->morphs('unitable');
+            $table->bigInteger('vehicle_id')->index();
+            $table->string('type');
             $table->timestamps();
         });
     }

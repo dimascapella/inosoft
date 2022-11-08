@@ -16,10 +16,13 @@ class CreateMotorcyclesTable extends Migration
         Schema::create('motorcycles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('release_year');
+            $table->string('color');
+            $table->integer('price');
             $table->string('engine');
             $table->integer('suspension');
             $table->string('transmission');
-            $table->morphs('vehicleable');
+            $table->integer('stock');
             $table->timestamps();
         });
     }

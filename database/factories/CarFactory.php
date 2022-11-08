@@ -16,11 +16,13 @@ class CarFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'release_year' => 2022,
+            'color' => $this->faker->colorName(),
+            'price' => $this->faker->numberBetween(10, 100) * 1000000,
             'engine' => $this->faker->word(),
             'seats' => $this->faker->numberBetween(2, 4),
             'type' => $this->faker->word(),
-            'vehicleable_id' => 1,
-            'vehicleable_type' => Vehicle::class
+            'stock' => $this->faker->numberBetween(0, 20)
         ];
     }
 }
