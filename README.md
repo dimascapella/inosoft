@@ -2,15 +2,18 @@
 
 ## Windows User
 ### Download dan Install MongoDB 
-1. [Download dan Install Mongo DB Server (4.2)]: https://www.mongodb.com/try/download/community
+1. Download dan Install Mongo DB Server (4.2) 
+https://www.mongodb.com/try/download/community
 
-2. [Download Mongo DB Shell dan Compass]: https://www.mongodb.com/try/download/shell
+2. Download Mongo DB Shell dan Compass
+https://www.mongodb.com/try/download/shell
 
 ### Download dan Install Xampp
-1. [Download Xampp]: https://www.apachefriends.org/download.html
+1. Download Xampp
+https://www.apachefriends.org/download.html
 
 ### Donwload MongoDB Driver
-1. [Download php_mongodb.dll, download yang versi stable]: https://pecl.php.net/package/mongodb/1.7.3/windows
+1. Download php_mongodb.dll, download yang versi stable https://pecl.php.net/package/mongodb/1.7.3/windows
 
 2. Extract dan Copas File php_mongodb.dll ke dalam directory C:xampp/php/ext dan tambahkan kode berikut pada file php.ini
 ```js
@@ -43,7 +46,8 @@ sudo apt install mongodb-org
 sudo apt-get install -y mongodb
 ```
 
-[### Download and Install LAMP]: https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04
+### Download and Install LAMP 
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04
 
 ### Install MongoDB package
 1. Run command
@@ -84,3 +88,16 @@ php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServicePro
 ```js
 php artisan jwt:secret
 ```
+
+6. Generate App Key
+```js
+php artisan key:generate
+```
+
+7. Migrasi Database, Tabel dan Data
+```js
+php artisan migrate:fresh --seed
+```
+
+## Mapping API 
+https://app.swaggerhub.com/apis-docs/DIMASCAPELLA1590/inosoft/1.0.0
