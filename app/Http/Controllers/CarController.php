@@ -20,6 +20,14 @@ class CarController extends Controller
         return $this->carRepository->getAll();
     }
 
+    public function store(Request $request){
+        return $this->carRepository->store($request->only('name', 'release_year', 'color', 'price', 'engine', 'seats', 'type', 'stock'));
+    }
+
+    public function destroy($id){
+        return $this->carRepository->destroy($id);
+    }
+
     public function checkStock($id){
         return $this->carRepository->checkStock($id);
     }

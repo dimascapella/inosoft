@@ -20,6 +20,14 @@ class MotorcycleController extends Controller
         return $this->motorcycleRepository->getAll();
     }
 
+    public function store(Request $request){
+        return $this->motorcycleRepository->store($request->only('name', 'release_year', 'color', 'price', 'engine', 'suspension', 'transmission', 'stock'));
+    }
+
+    public function destroy($id){
+        return $this->motorcycleRepository->destroy($id);
+    }
+
     public function checkStock($id){
         return $this->motorcycleRepository->checkStock($id);
     }

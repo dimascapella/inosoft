@@ -48,7 +48,7 @@ class AuthRepository implements AuthRepositoryInterface{
 
     public function logout($token){
         JWTAuth::invalidate($token);
-        return $this->responseSuccess('User has been logged out', 200);
+        return $this->responseSuccess('User Logout', 200);
     }
 
     public function who($token){
