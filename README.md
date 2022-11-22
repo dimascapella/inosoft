@@ -1,61 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+======================= DOKUMENTASI INSTALASI PROJECT =======================
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Windows User
+### Download dan Install MongoDB 
+1. Download dan Install Mongo DB Server (4.2) 
+https://www.mongodb.com/try/download/community
 
-## About Laravel
+2. Download Mongo DB Shell dan Compass
+https://www.mongodb.com/try/download/shell
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Download dan Install Xampp
+1. Download Xampp
+https://www.apachefriends.org/download.html
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Donwload MongoDB Driver
+1. Download php_mongodb.dll, download yang versi stable https://pecl.php.net/package/mongodb/1.7.3/windows
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+2. Extract dan Copas File php_mongodb.dll ke dalam directory C:xampp/php/ext dan tambahkan kode berikut pada file php.ini
+```js
+extension=php_mongodb.dll
+```
 
-## Learning Laravel
+3. Restart Xampp Service
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Linux User
+### Download and Install MongoDB
+1. Import Public CPG key untuk versi stabil mongoDB
+```js
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. Jalankan Command dibawah ini
+```js
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+```
 
-## Laravel Sponsors
+3. Update Local Package
+```js
+sudo apt update
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+4. Install MongoDB
+```js
+sudo apt install mongodb-org
+// or
+sudo apt-get install -y mongodb
+```
 
-### Premium Partners
+### Download and Install LAMP 
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+### Install MongoDB package
+1. Run command
+```js
+sudo pecl install mongodb
+```
 
-## Contributing
+2. Tambahkan kode berikut di dalam php.ini pada direktori /etc/php/8.0/fpm/php.ini
+```js
+extension=mongodb.so
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Restart service
+```js
+service php8.0-fpm restart
+```
 
-## Code of Conduct
+## Backend
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Clone Project
+```js
+git clone https://github.com/dimascapella/inosoft.git
+```
 
-## Security Vulnerabilities
+2. Masuk Folder Proejk dan Lakukan Install Dependencies
+```js
+composer install --ignore-platform-reqs
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+3. Copas .env.example dan Ubah Nama menjadi .env
 
-## License
+4. Publish Config
+```js
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+5. Generate Secret Key
+```js
+php artisan jwt:secret
+```
+
+6. Generate App Key
+```js
+php artisan key:generate
+```
+
+7. Migrasi Database, Tabel dan Data
+```js
+php artisan migrate:fresh --seed
+```
+
+## Mapping API 
+https://app.swaggerhub.com/apis-docs/DIMASCAPELLA1590/inosoft/1.0.0
