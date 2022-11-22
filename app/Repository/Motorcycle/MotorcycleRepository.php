@@ -10,7 +10,8 @@ class MotorcycleRepository implements MotorcycleRepositoryInterface{
     use ResponseTrait;
 
     public function getAll(){
-        
+        $motorcycles = Motorcycle::all();
+        return $this->responseSuccess('Success Fetch Motorcycle Data', 200, $motorcycles);
     }
 
     public function store(array $data){
